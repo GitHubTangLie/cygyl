@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cygyl.sys.repository.SysMenuMapper" >
+
+
+    <select id="selectListParentId" resultType="com.example.cygyl.sys.entity.SysMenuEntity">
+        select * from sys_menu
+            where parent_id = ${parentId}
+            order by order_number asc
+    </select>
+
+    <select id="selectNotButtonList" resultType="com.example.cygyl.sys.entity.SysMenuEntity">
+        select * from sys_menu
+            where type != 2
+            order by order_number asc
+    </select>
+</mapper>

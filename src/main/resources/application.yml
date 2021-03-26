@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: dev
+  jackson:
+    #驼峰转换
+    property-naming-strategy: SNAKE_CASE
+    #时间戳转换
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+#    serialization:
+#      WRITE_DATES_AS_TIMESTAMPS: true
+
+
+#第三方微信登录
+weChatConfig:
+  weChatAppID: wx9e55f93233ad3602
+  weChatSecret: 6cdbe6d4ce6sbcf0593c913d8a0ce12
+

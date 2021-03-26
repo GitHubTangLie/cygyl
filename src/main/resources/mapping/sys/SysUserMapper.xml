@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cygyl.sys.repository.SysUserMapper" >
+
+
+    <!-- 根据用户ID查询所有的权限返回perms-->
+    <select id="selectAllPermission" resultType="java.lang.String">
+        SELECT m.perms FROM sys_user_role ur
+                                LEFT JOIN sys_role_menu rm ON ur.role_id = rm.role_id
+                                LEFT JOIN sys_menu m ON rm.menu_id = m.id
+        WHERE ur.user_id = ${userId}
+    </select>
+
+    <!--根据号码查询用户基础信息 -->
+    <select id="selectByPhone" parameterType="java.lang.String" resultType="com.example.cygyl.sys.entity.SysUserEntity">
+        SELECT id,username,password,phone,status,salt,email,create_user_id,update_user_id,company_id,create_time,update_time,delete_time
+        FROM sys_user
+        WHERE phone = ${phone}
+    </select>
+
+
+    <!-- 根据用户id 查询所有的menu_id-->
+    <select id="selectAllMenuIdById" resultType="java.lang.Integer">
+        SELECT rm.menu_id FROM sys_user_role ur
+            JOIN sys_role_menu rm ON ur.role_id = rm.role_id
+        WHERE ur.user_id = ${userId}
+
+    </select>
+
+    <select id="selectByName" resultType="com.example.cygyl.sys.entity.SysUserEntity">
+        SELECT id,username,`status`,password,phone,salt,email,create_user_id,update_user_id,company_id,create_time,update_time,delete_time
+            FROM sys_user
+            WHERE username = '${username}'
+
+    </select>
+
+
+
+</mapper>

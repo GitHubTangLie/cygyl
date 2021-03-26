@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cygyl.sys.repository.SysRoleMapper">
+    <select id="selectRoleListById" resultType="java.lang.Integer">
+        SELECT sys_role.role_id
+        FROM sys_role
+        WHERE create_user_id = #{userId}
+    </select>
+</mapper>
